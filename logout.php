@@ -3,5 +3,5 @@
 if (isset($_SESSION['username'])){
     unset($_SESSION['username']); // xóa session login
 }
-header('Location: http://localhost/mind2/public/');
+header('Location: http://dangmanhhung.vn/public');
 ?>

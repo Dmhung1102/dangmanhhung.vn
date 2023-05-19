@@ -94,9 +94,6 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
             }
             $amenities = json_encode($amenitieslist, true);
         }
-//        if (isset($_POST['image'])) {
-//            $image = $_POST['image'];
-//        }
 
         if (isset($_POST['purpose'])) {
             $purpose = $_POST['purpose'];
@@ -112,36 +109,6 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
             $negotiatedprice = $_POST['negotiatedprice'];
         }
 
-//        $input = isset($_POST['album'])? trim($_POST['album']) :"";
-//        // var_dump($input) ;
-//        $album = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($album)){
-//            $album = json_encode($album, true);
-//        }
-
-//        $input = isset($_POST['estatelocation'])? trim($_POST['estatelocation']) :"";
-//        // var_dump($input) ;
-//        $estatelocation = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($estatelocation)){
-//            $estatelocation = json_encode($estatelocation, true);
-//        }
-//
-//        $input = isset($_POST['floorplans'])? trim($_POST['floorplans']) :"";
-//        // var_dump($input) ;
-//        $floorplans = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($floorplans)){
-//            $floorplans = json_encode($floorplans, true);
-//        }
-
-//        if (isset($_POST['introvideo'])) {
-//            $introvideo = $_POST['introvideo'];
-//        }
         if (isset($_POST['iframe'])) {
             $iframe = $_POST['iframe'];
         }
@@ -161,7 +128,6 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     $query = mysqli_query($conn, "$sqlSelectHouseId");
     $row = mysqli_fetch_array($query);
     $houseid = $row[0];
-    echo $houseid;
     if (isset($_FILES['upimage'])) {
         $purposeimg = 'image';
     }

@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['username']) == false) {
 // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-    header('Location: http://localhost/mingrand/public/login.php');
+    header('Location: http://dangmanhhung.vn/login.php');
 }
 ?>
 <!DOCTYPE html>

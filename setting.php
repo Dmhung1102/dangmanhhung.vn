@@ -5,7 +5,7 @@ $sqlQuery = "";
 include('connect.php');
 if (isset($_SESSION['username']) == false) {
     // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-    header('Location: http://localhost/mind2/public/login.php');
+    header('Location: http://dangmanhhung.vn/login.php');
 }
 if(isset($_POST['namechange'])){
     if(isset($_POST['newname'])){
