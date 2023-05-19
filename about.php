@@ -133,7 +133,7 @@ $dataAgent = $stmt -> fetchAll();
                         </div>
                         <div class="about-inner-right">
                             <div class="img-about">
-                                <img src="./assets/img/agent-area/agent-area-img-1.png" alt="">
+                                <img src="./assets/img/agent-area/agent-area-img-1.png" alt="hjkhdaskdjh">
                             </div>
                         </div>
                 </div>
