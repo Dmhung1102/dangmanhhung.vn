@@ -138,7 +138,13 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
         $name = $_FILES['upimage']['name'];
 
         $sql = "INSERT INTO housealbum (houseid, name, purposeimg) VALUES ('$houseid', '$name', '$purposeimg')";
-        $conn->query($sql);
+        $bien = $conn->query($sql);
+        if ($bien) {
+            echo 'success' ;
+        }
+        else {
+            echo 'error' ;
+        }
 
         if (isset($_FILES['upimages'])) {
             $purposeimg = 'album';
@@ -153,7 +159,13 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
                 $stmt = $connect->prepare("INSERT INTO housealbum(houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
                 $stmt->bindParam(1, $name);
                 $stmt->bindParam(2, $data, PDO::PARAM_LOB);
-                $stmt->execute();
+              $bien = $stmt->execute();
+                if ($bien) {
+                    echo 'success' ;
+                }
+                else {
+                    echo 'error' ;
+                }
             }
         }
         if (isset($_FILES['upestate'])) {
