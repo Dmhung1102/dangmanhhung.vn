@@ -4,8 +4,8 @@ $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 if ( isset($_GET['user'])) {
     if (isset($_GET['user'])) {
-        $sqlQuery = "SELECT h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as
-    avatar, u.name as username  FROM user as u JOIN house as h ON u.id = h.userid WHERE userid = $userid ";
+        $sqlQuery = "SELECT  h.livingroom as livingroom, h.status as status, h.locationdetails as locationdetails, h.length as length, h.width as width, h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, a.name as name, a.purposeimg as purposeimg 
+                        FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' AND userid = $userid ";
     }
 
 } else {
@@ -180,18 +180,18 @@ $dataPopular = $stmtPopular->fetchAll();
                                                 <img src="photo/<?= $houseid['image']?>">
                                             </a>
                                             <div class="propartes-img">
-                                                <div class="media pb-3 px-3">
-                                                    <div class="author justify-content-around">
-                                                        <a href="">
-                                                            <i class="fa-regular fa-user"></i>
-                                                            <?= $houseid['username']?>
-                                                        </a>
-                                                        <span>|</span>
-                                                        <a class="">Compare</a>
-                                                        <span>|</span>
-                                                        <a href="./proparty_details.php?id=<?= $houseid['id']?> ">Details</a>
-                                                    </div>
-                                                </div>
+<!--                                                <div class="media pb-3 px-3">-->
+<!--                                                    <div class="author justify-content-around">-->
+<!--                                                        <a href="">-->
+<!--                                                            <i class="fa-regular fa-user"></i>-->
+<!--                                                            --><?php //= $houseid['username']?>
+<!--                                                        </a>-->
+<!--                                                        <span>|</span>-->
+<!--                                                        <a class="">Compare</a>-->
+<!--                                                        <span>|</span>-->
+<!--                                                        <a href="./proparty_details.php?id=--><?php //= $houseid['id']?><!-- ">Details</a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
                                             </div>
                                             <div class="propartes-wrap-details p-xl-3 p-4">
                                                 <h4>
