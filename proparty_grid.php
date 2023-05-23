@@ -221,7 +221,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                     <div class="col-xl-6 col-12 mt-5">
                                         <div class="single-propartes">
                                             <a href="./proparty_details.php?id= <?= $userid['id']?> ">
-                                                <img src="photo/<?= $userid['name']?>">
+                                                <img src="photo/<?= $userid['data']?>">
                                             </a>
                                             <div class="propartes-img">
 <!--                                                <div class="media pb-3 px-3">-->
