@@ -222,7 +222,7 @@ $dataPopular = $stmtPopular->fetchAll();
                         <?php foreach($dataAlbum as $albumkey => $albumimage):?>
                             <div class="item">
                                 <?php
-                                echo "<img src='photo/".$albumimage['name']."' >";
+                                echo "<img src='photo/".$albumimage['data']."' >";
                                 ?>
                             </div>
                         <?php endforeach?>
