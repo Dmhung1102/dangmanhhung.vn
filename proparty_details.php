@@ -60,6 +60,13 @@ $stmtPopular = $connect->prepare($sqlQueryPopular);
 $stmtPopular ->execute();
 $dataPopular = $stmtPopular->fetchAll();
 
+$sqlImage = "SELECT data FROM images WHERE image_id = $id AND purposeimg = 'album'";
+$stmt = $connect->prepare($sqlImage);
+$stmt->bindParam(':id', $imageId);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$imageData = $row['data'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -222,7 +229,7 @@ $dataPopular = $stmtPopular->fetchAll();
                         <?php foreach($dataAlbum as $albumkey => $albumimage):?>
                             <div class="item">
                                 <?php
-                                echo "<img src='photo/".$albumimage['data']."' >";
+                                echo "<img src='photo/".$albumimage['name']."' >";
                                 ?>
                             </div>
                         <?php endforeach?>
@@ -236,7 +243,7 @@ $dataPopular = $stmtPopular->fetchAll();
 <!--                            </div>-->
 <!---->
 <!--                        </div>-->
-                        <?php foreach($dataAlbum as $albumkey => $albumimage):?>
+                        <?php foreach($row as $albumkey => $albumimage):?>
                             <div class="item">
                                 <?php
                                 echo "<img src='photo/".$albumimage['name']."' >";
