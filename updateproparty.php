@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $password = "Dmhung1102!";
 $dbname = "mingrand";
@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
 
-    "root", "");
+    "root", "Dmhung1102!");
 session_start();
 $id = $_SESSION['id'] ;
 if(isset($_POST['saveupdate'])){
