@@ -19,6 +19,7 @@ $stmtAlbum = $connect->prepare($sqlQueryAlbum);
 $stmtAlbum ->execute();
 $dataAlbum = $stmtAlbum->fetchAll();
 
+
 $sqlQueryEstate = "SELECT * FROM housealbum WHERE houseid = $id AND purposeimg = 'estate'";
 $stmtEstate = $connect->prepare($sqlQueryEstate);
 $stmtEstate ->execute();
@@ -228,9 +229,10 @@ $imageData = $row['data'];
 <!--                        </div>-->
                         <?php foreach($dataAlbum as $albumkey => $albumimage):?>
                             <div class="item">
-                                <?php
-                                echo "<img src='photo/".$albumimage['name']."' >";
-                                ?>
+                                <?php foreach ($dataAlbum as $row): ?>
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                         alt="<?php echo $row['name']; ?>">
+                                <?php endforeach; ?>
                             </div>
                         <?php endforeach?>
                     </div>
@@ -245,9 +247,10 @@ $imageData = $row['data'];
 <!--                        </div>-->
                         <?php foreach($row as $albumkey => $albumimage):?>
                             <div class="item">
-                                <?php
-                                echo "<img src='photo/".$albumimage['name']."' >";
-                                ?>
+                                <?php foreach ($dataAlbum as $row): ?>
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                         alt="<?php echo $row['name']; ?>">
+                                <?php endforeach; ?>
                             </div>
                         <?php endforeach?>
                     </div>
@@ -355,54 +358,35 @@ $imageData = $row['data'];
                                         <div class="estate-location">
                                             <h3>Estate Location</h3>
                                             <div id="sync3" class="owl-carousel ">
-                                                <?php foreach ($dataEstate as $albumkey => $estateimg): ?>
-                                                    <div class="item">
-                                                        <?php
-                                                        echo "<img src='photo/" . $estateimg['name'] . "' >";
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach ?>
+<!--                                                --><?php //foreach ($dataEstate as $albumkey => $estateimg): ?>
+<!--                                                    <div class="item">-->
+<!--                                                        --><?php
+//                                                        echo "<img src='photo/" . $estateimg['name'] . "' >";
+//                                                        ?>
+<!--                                                    </div>-->
+<!--                                                --><?php //endforeach ?>
+                                                <?php foreach ($dataEstate as $row): ?>
+                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                                         alt="<?php echo $row['name']; ?>">
+                                                <?php endforeach; ?>
                                             </div>
-                                            <!--                                                    <button class="btn btn-secondary dropdown-toggle" type="button"-->
-                                            <!--                                                        id="dropdownMenuButton1" data-bs-toggle="dropdown"-->
-                                            <!--                                                        aria-expanded="false">-->
-                                            <!--                                                        Satelite-->
-                                            <!--                                                    </button>-->
-                                            <!--                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
-                                            <!--                                                        <li>-->
-                                            <!--                                                            <a class="tablinks active fw-bold p-0 px-2" data-electronic="allproducts">Satelite 1</a>-->
-                                            <!--                                                        </li>-->
-                                            <!--                                                        <li>-->
-                                            <!--                                                            <a class="tablinks fw-bold p-0 px-2" data-electronic="Microcontrollers">Satelite 2</a>-->
-                                            <!--                                                        </li>-->
-                                            <!--                                                        <li>-->
-                                            <!--                                                            <a class="tablinks fw-bold p-0 px-2" data-electronic="module">Satelite 3</a>-->
-                                            <!--                                                        </li>-->
-                                            <!--                                                    </ul>-->
-                                            <!--                                                    <div class="all-product mt-3">-->
-                                            <!--                                                        <div id="allproducts" class="tabcontent active ">-->
-                                            <!--                                                            --><?php //foreach($dataEstate as $albumkey => $estateimg):?>
-                                            <!--                                                                <div class="item">-->
-                                            <!--                                                                    --><?php
-                                            //                                                                    echo "<img src='photo/".$estateimg['name']."' >";
-                                            //                                                                    ?>
-                                            <!--                                                                </div>-->
-                                            <!--                                                            --><?php //endforeach?>
-                                            <!--                                                        </div>-->
-                                            <!--                                                    </div>-->
                                         </div>
                                     </div>
                                     <div class="property-amenities mt-5">
                                         <div class="floor-plans">
                                             <h3>Floor Plans</h3>
                                             <div id="sync4" class="owl-carousel ">
-                                                <?php foreach($datafloor as $albumkey => $floorimg):?>
-                                                    <div class="item">
-                                                        <?php
-                                                        echo "<img src='photo/".$floorimg['name']."' >";
-                                                        ?>
-                                                    </div>
-                                                <?php endforeach?>
+<!--                                                --><?php //foreach($datafloor as $albumkey => $floorimg):?>
+<!--                                                    <div class="item">-->
+<!--                                                        --><?php
+//                                                        echo "<img src='photo/".$floorimg['name']."' >";
+//                                                        ?>
+<!--                                                    </div>-->
+<!--                                                --><?php //endforeach?>
+                                                <?php foreach ($datafloor as $row): ?>
+                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                                         alt="<?php echo $row['name']; ?>">
+                                                <?php endforeach; ?>
                                             </div>
 <!--                                            <div class="estate-location-top">-->
 <!--                                                <div class="dropdown">-->

@@ -141,7 +141,7 @@ $floor= $stmtFloor -> fetchAll();
 
                                         <div id="previewimage" class="setpreviewimg mt-4"></div>
                                         <?php
-                                        echo "<a class='delete-album' href = './deleteimg.php?name=". $image['name'] ."&houseid=" . $id ."&purpose=image'>X</a>";
+//                                        echo "<a class='delete-album' href = './deleteimg.php?name=". $image['name'] ."&houseid=" . $id ."&purpose=image'>X</a>";
                                         echo "<img src='photo/" . $image['name'] . "' >";
                                         ?>
                                     </div>
