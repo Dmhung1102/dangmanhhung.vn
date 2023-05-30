@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
 
-    "root", "Dmhung1102!");
+    "root", "");
 session_start();
 $userid = $_SESSION['userid'] ;
 if(isset($_POST['save'])){
@@ -94,9 +94,6 @@ if(isset($_POST['save'])){
         }
         $amenities = json_encode($amenitieslist, true);
     }
-//        if (isset($_POST['image'])) {
-//            $image = $_POST['image'];
-//        }
 
     if (isset($_POST['purpose'])) {
         $purpose = $_POST['purpose'];
@@ -112,36 +109,6 @@ if(isset($_POST['save'])){
         $negotiatedprice = $_POST['negotiatedprice'];
     }
 
-//        $input = isset($_POST['album'])? trim($_POST['album']) :"";
-//        // var_dump($input) ;
-//        $album = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($album)){
-//            $album = json_encode($album, true);
-//        }
-
-//        $input = isset($_POST['estatelocation'])? trim($_POST['estatelocation']) :"";
-//        // var_dump($input) ;
-//        $estatelocation = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($estatelocation)){
-//            $estatelocation = json_encode($estatelocation, true);
-//        }
-//
-//        $input = isset($_POST['floorplans'])? trim($_POST['floorplans']) :"";
-//        // var_dump($input) ;
-//        $floorplans = explode("\n", str_replace("\r", "", $input));
-//
-//        // encoce array to string to save into database
-//        if(isset($floorplans)){
-//            $floorplans = json_encode($floorplans, true);
-//        }
-
-//        if (isset($_POST['introvideo'])) {
-//            $introvideo = $_POST['introvideo'];
-//        }
     if (isset($_POST['iframe'])) {
         $iframe = $_POST['iframe'];
     }
@@ -162,17 +129,22 @@ if(isset($_POST['save'])){
     $row = mysqli_fetch_array($query);
     $houseid = $row[0];
     echo $houseid;
+
     if (isset($_FILES['upimage'])) {
         $purposeimg = 'image';
-    }
-    $errors = array();
-    $file_parts = explode('.', $_FILES['upimage']['name']);
-    $file_ext = strtolower(end($file_parts));
-    $expensions = array("jpeg", "jpg", "png");
-    $name = $_FILES['upimage']['name'];
+        $upimages = $_FILES['upimages'];
+        // Lặp qua từng tệp được tải lên
+        for ($i = 0; $i < count($upimages['name']); $i++) {
+            $name = $upimages['name'][$i];
+            $data = file_get_contents($upimages['tmp_name'][$i]);
 
-    $sql = "INSERT INTO housealbum (houseid, name, purposeimg) VALUES ('$houseid', '$name', '$purposeimg')";
-    $conn->query($sql);
+            // Thêm dữ liệu ảnh vào SQL bằng PDO
+            $stmt = $connect->prepare("INSERT INTO housealbum (houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
+            $stmt->bindParam(1, $name);
+            $stmt->bindParam(2, $data, PDO::PARAM_LOB);
+            $stmt->execute();
+        }
+    }
 
     if (isset($_FILES['upimages'])) {
         $purposeimg = 'album';
@@ -184,12 +156,13 @@ if(isset($_POST['save'])){
             $data = file_get_contents($upimages['tmp_name'][$i]);
 
             // Thêm dữ liệu ảnh vào SQL bằng PDO
-            $stmt = $connect->prepare("INSERT INTO housealbum(houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
+            $stmt = $connect->prepare("INSERT INTO housealbum (houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
             $stmt->bindParam(1, $name);
             $stmt->bindParam(2, $data, PDO::PARAM_LOB);
             $stmt->execute();
         }
     }
+
     if (isset($_FILES['upestate'])) {
         $purposeimg = 'estate';
 
@@ -206,6 +179,7 @@ if(isset($_POST['save'])){
             $stmt->execute();
         }
     }
+
     if (isset($_FILES['upfloor'])) {
         $purposeimg = 'floor';
 
@@ -226,4 +200,3 @@ if(isset($_POST['save'])){
 }
 
 ?>
-
