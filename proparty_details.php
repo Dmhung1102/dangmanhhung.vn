@@ -354,7 +354,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                     <div class="estate-location">
                                         <h3>Estate Location</h3>
                                         <div id="sync3" class="owl-carousel ">
-                                            <?php foreach ($dataAlbum as $row): ?>
+                                            <?php foreach ($dataEstate as $row): ?>
                                                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
                                                      alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
@@ -392,7 +392,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                     <div class="floor-plans">
                                         <h3>Floor Plans</h3>
                                         <div id="sync4" class="owl-carousel ">
-                                            <?php foreach ($dataAlbum as $row): ?>
+                                            <?php foreach ($datafloor as $row): ?>
                                                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
                                                      alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
