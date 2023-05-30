@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
 
-    "root", "");
+    "root", "Dmhung1102!");
 session_start();
 $userid = $_SESSION['userid'] ;
 if(isset($_POST['save'])){
