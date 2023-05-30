@@ -57,7 +57,7 @@ $stmtSell = $connect->prepare($sqlQuerySell);
 $stmtSell ->execute();
 $dataSell = $stmtSell->fetch();
 
-$sqlQueryPopular = "SELECT  h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'  LIMIT 3";
+$sqlQueryPopular = "SELECT  * FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'album'  LIMIT 3";
 $stmtPopular = $connect->prepare($sqlQueryPopular);
 $stmtPopular ->execute();
 $dataPopular = $stmtPopular->fetchAll();
@@ -448,19 +448,19 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="property-amenities mt-5">
                                     <div class="nearby-area-details">
                                         <h3>Some properties nearby </h3>
-                                        <?php foreach ($dataAlbum as $row): ?>
+                                        <?php foreach ($dataPopular as $nearby): ?>
                                             <div class="nearby-area d-flex mt-3 justify-content-between">
 
                                                 <div class="nearby-in4 px-2 d-flex">
-                                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>" alt="<?php echo $row['name']; ?>">
+                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($nearby['data']); ?>" alt="<?php echo $nearby['name']; ?>">
                                                     <div class="nearby-in4img px-2">
-                                                        <h5><?= $row['title'] ?></h5>
-                                                        <p> Location: <?= $row['location'] ?></p>
-                                                        <p> Type: <?= $row['type'] ?></p>
+                                                        <h5><?= $nearby['title'] ?></h5>
+                                                        <p> Location: <?= $nearby['location'] ?></p>
+                                                        <p> Type: <?= $nearby['type'] ?></p>
                                                     </div>
                                                 </div>
-                                                <div class="row-rebviews">
-                                                    <h4>Status: <?= $row['status']?></h4>
+                                                <div class="nearby-rebviews">
+                                                    <h4>Status: <?= $nearby['status']?></h4>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
