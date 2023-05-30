@@ -448,21 +448,19 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="property-amenities mt-5">
                                     <div class="nearby-area-details">
                                         <h3>Some properties nearby </h3>
-                                        <?php foreach ($dataPopular as $datanbkey => $nearby): ?>
+                                        <?php foreach ($dataAlbum as $row): ?>
                                             <div class="nearby-area d-flex mt-3 justify-content-between">
 
                                                 <div class="nearby-in4 px-2 d-flex">
-                                                    <?php
-                                                    echo "<img src='photo/".$nearby['name']."' >";
-                                                    ?>
+                                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>" alt="<?php echo $row['name']; ?>">
                                                     <div class="nearby-in4img px-2">
-                                                        <h5><?= $nearby['title'] ?></h5>
-                                                        <p> Location: <?= $nearby['location'] ?></p>
-                                                        <p> Type: <?= $nearby['type'] ?></p>
+                                                        <h5><?= $row['title'] ?></h5>
+                                                        <p> Location: <?= $row['location'] ?></p>
+                                                        <p> Type: <?= $row['type'] ?></p>
                                                     </div>
                                                 </div>
-                                                <div class="nearby-rebviews">
-                                                    <h4>Status: <?= $nearby['status']?></h4>
+                                                <div class="row-rebviews">
+                                                    <h4>Status: <?= $row['status']?></h4>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
