@@ -4,7 +4,7 @@ session_start();
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 
-if(isset($_GET['search']) || isset($_GET['sort']) || isset($_GET['sortbed']) || isset($_GET['sortbath']) || isset($_GET['sortliving'])) {
+if(isset($_GET['search']) || isset($_GET['sort']) || isset($_GET['sortbed']) || isset($_GET['sortbath']) || isset($_GET['sortliving']) || isset($_GET['page'])) {
     if (isset($_GET['sort'])) {
         $sort=$_GET['sort'];
         if ($sort=='area') {
@@ -16,34 +16,64 @@ if(isset($_GET['search']) || isset($_GET['sort']) || isset($_GET['sortbed']) || 
         if ($sort == 'pricemax'){
             $condition = 'ORDER BY h.price + 0 DESC';
         }
-        $sqlQueryUserid = "SELECT h.livingroom as livingroom, h.status as status, h.locationdetails as locationdetails, h.length as length, h.width as width, h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, a.name as name, a.purposeimg as purposeimg 
-                        FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' $condition";
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' $condition";
+    }
+    if (isset($_GET['page'])) {
+        $page=$_GET['page'];
+        if ($page == '2'){
+            $condition = ' OFFSET 6 ';
+        }
+        if ($page == '3'){
+            $condition = ' OFFSET 12';
+        }
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' LIMIT 6 $condition";
     }
     if(isset($_GET['sortbath']))
     {
         $sortbath=$_GET['sortbath'];
-        $sqlQueryUserid = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE purposeimg = 'image' AND bathrooms = $sortbath";
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' AND bathrooms = $sortbath";
     }
     if(isset($_GET['sortbed']))
     {
         $sortbed=$_GET['sortbed'];
-        $sqlQueryUserid = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE purposeimg = 'image' AND bedrooms = $sortbed";
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' AND bedrooms = $sortbed";
     }
 
     if(isset($_GET['sortliving']))
     {
         $sortliving=$_GET['sortliving'];
-        $sqlQueryUserid = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE purposeimg = 'image' AND livingroom = $sortliving";
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' AND livingroom = $sortliving";
     }
     if(isset($_GET['search']) && !empty($_GET['search']))
     {
         $key = $_GET['search'];
-        $sqlQueryUserid = "SELECT * FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' AND  location LIKE '%$key%' OR purposeimg = 'image' AND description LIKE '%$key%' OR type LIKE '%$key%' OR purposeimg = 'image' AND locationdetails LIKE '%$key%' OR purposeimg = 'image' AND orienten LIKE '%$key%'";
+        $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' AND  location LIKE '%$key%' OR purposeimg = 'image' AND description LIKE '%$key%' OR type LIKE '%$key%' OR purposeimg = 'image' AND locationdetails LIKE '%$key%' OR purposeimg = 'image' AND orienten LIKE '%$key%'";
     }
+
 }
 else {
-    $sqlQueryUserid = "SELECT  h.livingroom as livingroom, h.status as status, h.locationdetails as locationdetails, h.length as length, h.width as width, h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, a.name as name, a.purposeimg as purposeimg 
-                        FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' ";
+    $sqlQueryUserid = "SELECT h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+	FROM user as u 
+    JOIN  house as h  ON u.id = h.userid 
+    JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' LIMIT 6 ";
 }
 
 
@@ -73,6 +103,47 @@ $stmtRent ->execute();
 $dataRent = $stmtRent->fetch();
 
 $sqlQuerySell = "SELECT COUNT(id) AS countrent FROM house WHERE purpose ='sell'";
+$stmtSell = $connect->prepare($sqlQuerySell);
+$stmtSell ->execute();
+$dataSell = $stmtSell->fetch();
+
+$sqlQueryRelax = "SELECT COUNT(id) AS countrent FROM house WHERE purpose ='Relax'";
+$stmtRelax = $connect->prepare($sqlQueryRelax);
+$stmtRelax ->execute();
+$dataRelax = $stmtRelax->fetch();
+
+$sqlQueryPopular = "SELECT  a.data as data ,h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'   LIMIT 3";
+$stmtPopular = $connect->prepare($sqlQueryPopular);
+$stmtPopular ->execute();
+$dataPopular = $stmtPopular->fetchAll();
+
+
+$stmt2 = $connect->prepare($sqlQueryUserid);
+$stmt2 ->execute();
+$dataUserid = $stmt2->fetchAll();
+
+
+$sqlQueryNB = "SELECT COUNT(id) AS countnb FROM house WHERE location ='Ninh Binh'";
+$stmtNB = $connect->prepare($sqlQueryNB);
+$stmtNB ->execute();
+$dataNB = $stmtNB->fetch();
+
+$sqlQueryHB = "SELECT COUNT(id) AS counthb FROM house WHERE location ='Hoa Binh'";
+$stmtHB = $connect->prepare($sqlQueryHB);
+$stmtHB ->execute();
+$dataHB = $stmtHB->fetch();
+
+$sqlQueryHN = "SELECT COUNT(id) AS counthn FROM house WHERE location ='Ha Noi'";
+$stmtHN = $connect->prepare($sqlQueryHN);
+$stmtHN ->execute();
+$dataHN = $stmtHN->fetch();
+
+$sqlQueryRent = "SELECT COUNT(id) AS countrent FROM house WHERE purpose ='rent'";
+$stmtRent = $connect->prepare($sqlQueryRent);
+$stmtRent ->execute();
+$dataRent = $stmtRent->fetch();
+
+$sqlQuerySell = "SELECT COUNT(id) AS countsell FROM house WHERE purpose ='sell'";
 $stmtSell = $connect->prepare($sqlQuerySell);
 $stmtSell ->execute();
 $dataSell = $stmtSell->fetch();
@@ -192,7 +263,8 @@ $dataPopular = $stmtPopular->fetchAll();
                             <div class="row">
                                 <div class="form-group">
                                     <form action="" method="get">
-                                        <input type="text" class="form-control text-dark" placeholder="Search your keyword" name="search" >
+                                        <input type="text" class="form-control text-dark"
+                                               placeholder="Search your keyword" name="search">
                                         <button class="submit-icon"
                                                 value="<?php if (isset($_GET['search'])) {echo $_GET['search']; }?>">
                                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -202,12 +274,15 @@ $dataPopular = $stmtPopular->fetchAll();
                             </div>
                         </div>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                 Sort By
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="?sort=pricemin">Price <i class="fa-solid fa-arrow-down"></i></a></li>
-                                <li><a class="dropdown-item" href="?sort=pricemax">Price <i class="fa-solid fa-arrow-up"></i></a></li>
+                                <li><a class="dropdown-item" href="?sort=pricemin">Price <i
+                                            class="fa-solid fa-arrow-down"></i></a></li>
+                                <li><a class="dropdown-item" href="?sort=pricemax">Price <i
+                                            class="fa-solid fa-arrow-up"></i></a></li>
                             </ul>
                         </div>
                         <div class="list-icon-right">
@@ -217,25 +292,26 @@ $dataPopular = $stmtPopular->fetchAll();
                     <div class="w3-content" style="max-width:800px">
                         <div class="mySlides">
                             <div class="row">
-                                <?php foreach ($dataUserid as $grid =>$userid):?>
+                                <?php foreach ($dataUserid as $userid): ?>
                                     <div class="col-xl-6 col-12 mt-5">
                                         <div class="single-propartes">
-                                            <a href="./proparty_details.php?id= <?= $userid['id']?> ">
-                                                <img src="photo/<?= $userid['data']?>">
+                                            <a href="./proparty_details.php?id=<?= $userid['id']?> ">
+                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($userid['data']); ?>"
+                                                     alt="<?php echo $userid['name']; ?>">
                                             </a>
                                             <div class="propartes-img">
-<!--                                                <div class="media pb-3 px-3">-->
-<!--                                                    <div class="author justify-content-around">-->
-<!--                                                        <a href="">-->
-<!--                                                            <i class="fa-regular fa-user"></i>-->
-<!--                                                            --><?php //= $userid['username'] ?>
-<!--                                                        </a>-->
-<!--                                                        <span>|</span>-->
-<!--                                                        <a class="">0--><?php //= $userid['phonenumber'] ?><!--</a>-->
-<!--                                                        <span>|</span>-->
-<!--                                                        <a class="">--><?php //= $userid['status'] ?><!--</a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                <div class="media pb-3 px-3">
+                                                    <div class="author justify-content-around">
+                                                        <a href="">
+                                                            <i class="fa-regular fa-user"></i>
+                                                            <?= $userid['username']?>
+                                                        </a>
+                                                        <span>|</span>
+                                                        <a class="">Compare</a>
+                                                        <span>|</span>
+                                                        <a href="./proparty_details.php?id=<?= $userid['id']?> ">Details</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="propartes-wrap-details p-xl-3 p-4">
                                                 <h4>
@@ -244,7 +320,8 @@ $dataPopular = $stmtPopular->fetchAll();
                                                 <ul class="propartes-inner">
                                                     <li>
                                                         <i class="fa-solid fa-location-dot"></i>
-                                                        <?= $userid['area']?>, <?= $userid['locationdetails']?>, <?= $userid['location']?>
+                                                        <?= $userid['area']?>, <?= $userid['locationdetails']?>,
+                                                        <?= $userid['location']?>
                                                     </li>
                                                     <li>
                                                         <a href=""><?= $userid['purpose']?></a>
@@ -270,14 +347,46 @@ $dataPopular = $stmtPopular->fetchAll();
                     </div>
                     <div class="w3-center">
                         <div class="section">
-                            <button class="rounded-circle " onclick="plusDivs(-1)">❮❮ </button>
+                            <?php
+                            if (isset($_GET['page'])) {
+                                $page=$_GET['page'];
+                                if ($page == '2'){
+                                }
+                                ?>
+                                <a href="proparty_grid.php">
+                                    <button class="rounded-circle " onclick="plusDivs(-1)">❮❮ </button>
+                                </a>
+                                <a href="proparty_grid.php">
+                                    <button class="rounded-circle " onclick="plusDivs(-1)">❮ </button>
+                                </a>
+                                <?php
+                            } else {
+                            }
+                            ?>
                         </div>
-                        <button class="rounded-circle" onclick="currentDiv(1)">1</button>
-                        <button class="rounded-circle" onclick="currentDiv(2)">2</button>
-                        <button class="rounded-circle" onclick="currentDiv(3)">3</button>
-                        <button class="rounded-circle" onclick="currentDiv(3)">...</button>
+                        <a href="proparty_grid.php">
+                            <button class="rounded-circle" onclick="currentDiv(1)">1</button>
+                        </a>
+                        <a href="?page=2">
+                            <button class="rounded-circle" onclick="currentDiv(2)">2</button>
+                        </a>
+                        <a href="?page=3">
+                            <button class="rounded-circle" onclick="currentDiv(3)">3</button>
+                        </a>
                         <div class="section">
-                            <button class="rounded-circle " onclick="plusDivs(1)">❯❯</button>
+                            <?php
+                            if (isset($_GET['page']) && $_GET['page'] == 3) {
+
+                            } else {
+
+                                echo '<a href="?page=3">
+                                        <button class="rounded-circle " onclick="plusDivs(1)"> ❯ </button>
+                                    </a>
+                                    <a href="?page=3">
+                                        <button class="rounded-circle " onclick="plusDivs(1)"> ❯❯ </button>
+                                    </a>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -296,6 +405,9 @@ $dataPopular = $stmtPopular->fetchAll();
                                     <a href="proparty_list.php?purpose=sell">
                                         <li>Sell</li>
                                     </a>
+                                    <a href="proparty_list.php?purpose=relax">
+                                        <li>Relax</li>
+                                    </a>
                                 </ul>
                             </div>
                             <div class="categories-right text-center">
@@ -308,7 +420,10 @@ $dataPopular = $stmtPopular->fetchAll();
                                         echo  $dataSell[0];
                                         ?>)
                                     </li>
-
+                                    <li>(<?php
+                                        echo  $dataRelax[0];
+                                        ?>)
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -319,7 +434,8 @@ $dataPopular = $stmtPopular->fetchAll();
                         </div>
                         <div class="categories-in4 justify-content-between">
                             <div class="dropdown-roomsearch w-100">
-                                <button class="btn-roomsearch dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn-roomsearch dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>Bedrooms</span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -331,7 +447,8 @@ $dataPopular = $stmtPopular->fetchAll();
                         </div>
                         <div class="categories-in4 justify-content-between">
                             <div class="dropdown-roomsearch w-100 py-2">
-                                <button class="btn-roomsearch dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn-roomsearch dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Bathroom
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -343,7 +460,8 @@ $dataPopular = $stmtPopular->fetchAll();
                         </div>
                         <div class="categories-in4 justify-content-between">
                             <div class="dropdown-roomsearch w-100">
-                                <button class="btn-roomsearch dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn-roomsearch dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Livingroom
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -397,25 +515,26 @@ $dataPopular = $stmtPopular->fetchAll();
                             <div class="comment">
                                 <h3>Popular Proparty</h3>
                             </div>
-                            <?php foreach ($dataPopular as $housell => $popularproperty):?>
-                            <div class="popular-feed-inner border-bottom mt-2">
-                                <div class="thumbnail mt-2 ">
-                                    <a href="proparty_details.php?id= <?= $popularproperty['id']?>">
-                                        <?php
-                                        echo "<img src='photo/".$popularproperty['name']."' >";
-                                        ?>
-                                    </a>
+                            <?php foreach ($dataPopular as $popularproperty):?>
+                                <div class="popular-feed-inner border-bottom mt-2">
+                                    <div class="thumbnail mt-2 ">
+                                        <a href="proparty_details.php?id=<?= $popularproperty['id']?>">
+
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($popularproperty['data']); ?>"
+                                                 alt="<?php echo $popularproperty['name']; ?>">
+
+                                        </a>
+                                    </div>
+                                    <div class="details mt-2">
+                                        <h5><?= $popularproperty['title'] ?></h5>
+                                        <ul>
+                                            <li>
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <p><?= $popularproperty['location']?></p>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="details mt-2">
-                                    <h5><?= $popularproperty['title'] ?></h5>
-                                    <ul>
-                                        <li>
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            <p><?= $popularproperty['location']?></p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             <?php endforeach;?>
                         </div>
                     </div>

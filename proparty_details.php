@@ -359,33 +359,6 @@ $dataPopular = $stmtPopular->fetchAll();
                                                      alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
                                         </div>
-                                        <!--                                                    <button class="btn btn-secondary dropdown-toggle" type="button"-->
-                                        <!--                                                        id="dropdownMenuButton1" data-bs-toggle="dropdown"-->
-                                        <!--                                                        aria-expanded="false">-->
-                                        <!--                                                        Satelite-->
-                                        <!--                                                    </button>-->
-                                        <!--                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
-                                        <!--                                                        <li>-->
-                                        <!--                                                            <a class="tablinks active fw-bold p-0 px-2" data-electronic="allproducts">Satelite 1</a>-->
-                                        <!--                                                        </li>-->
-                                        <!--                                                        <li>-->
-                                        <!--                                                            <a class="tablinks fw-bold p-0 px-2" data-electronic="Microcontrollers">Satelite 2</a>-->
-                                        <!--                                                        </li>-->
-                                        <!--                                                        <li>-->
-                                        <!--                                                            <a class="tablinks fw-bold p-0 px-2" data-electronic="module">Satelite 3</a>-->
-                                        <!--                                                        </li>-->
-                                        <!--                                                    </ul>-->
-                                        <!--                                                    <div class="all-product mt-3">-->
-                                        <!--                                                        <div id="allproducts" class="tabcontent active ">-->
-                                        <!--                                                            --><?php //foreach($dataEstate as $albumkey => $estateimg):?>
-                                        <!--                                                                <div class="item">-->
-                                        <!--                                                                    --><?php
-                                        //                                                                    echo "<img src='photo/".$estateimg['name']."' >";
-                                        //                                                                    ?>
-                                        <!--                                                                </div>-->
-                                        <!--                                                            --><?php //endforeach?>
-                                        <!--                                                        </div>-->
-                                        <!--                                                    </div>-->
                                     </div>
                                 </div>
                                 <div class="property-amenities mt-5">
@@ -397,54 +370,6 @@ $dataPopular = $stmtPopular->fetchAll();
                                                      alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
                                         </div>
-                                        <!--                                            <div class="estate-location-top">-->
-                                        <!--                                                <div class="dropdown">-->
-                                        <!--                                                    <h3>Floor Plans</h3>-->
-                                        <!--                                                    <button class="btn btn-secondary dropdown-toggle" type="button"-->
-                                        <!--                                                        id="dropdownMenuButton2" data-bs-toggle="dropdown"-->
-                                        <!--                                                        aria-expanded="false">-->
-                                        <!--                                                        Floor-->
-                                        <!--                                                    </button>-->
-                                        <!--                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">-->
-                                        <!--                                                        <li><a class="tablinkss active" data-floor="floor1">Floor 1</a>-->
-                                        <!--                                                        </li>-->
-                                        <!--                                                        <li><a class="tablinkss" data-floor="floor2">Floor 2</a></li>-->
-                                        <!--                                                        <li><a class="tablinkss" data-floor="floor3">Floor 3</a></li>-->
-                                        <!--                                                    </ul>-->
-                                        <!--                                                    <div class="floor-plans mt-3">-->
-                                        <!---->
-                                        <!--                                                        <div id="floor1" class="tabcontentt active">-->
-                                        <!--                                                            --><?php //foreach($datafloor as $albumkey => $floorimg):?>
-                                        <!--                                                                <div class="item">-->
-                                        <!--                                                                    --><?php
-                                        //                                                                    echo "<img src='photo/".$floorimg['name']."' >";
-                                        //                                                                    ?>
-                                        <!--                                                                </div>-->
-                                        <!--                                                            --><?php //endforeach?>
-                                        <!--                                                        </div>-->
-                                        <!--                                                    </div>-->
-                                        <!--                                                </div>-->
-                                        <!--                                            </div>-->
-                                    </div>
-                                </div>
-                                <!--                                    <div class="property-amenities mt-5">-->
-                                <!--                                        <div class="intro-video">-->
-                                <!--                                            <div class="estate-location-top">-->
-                                <!--                                                <div class="dropdown">-->
-                                <!--                                                    <h3>Intro Video</h3>-->
-                                <!--                                                    <div class="intro-video-inner">-->
-                                <!--                                                        <video controls>-->
-                                <!--                                                            <source-->
-                                <!--                                                                    src="--><?php //= $house['introvideo'] ?>
-                                <!--"-->
-                                <!--                                                                    type="video/mp4">-->
-                                <!--                                                            Your browser does not support the video tag.-->
-                                <!--                                                        </video>-->
-                                <!--                                                    </div>-->
-                                <!--                                                </div>-->
-                                <!--                                            </div>-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
                                 <div class="property-amenities mt-5">
                                     <div class="nearby-area-details">
                                         <h3>Some properties nearby </h3>
