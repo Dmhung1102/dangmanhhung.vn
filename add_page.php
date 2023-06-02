@@ -367,7 +367,7 @@ if (isset($_SESSION['username']) == false) {
                                 <div class="form-label">Image</div>
                                 <div class="input-imgs">
                                     <label for="image_uploads" class="position-absolute">Choose image to upload (PNG, JPG)</label>
-                                    <input type="file" name="upimage[]" id="inputimage" onchange="previewImage(this)" multiple class="position-relative" />
+                                    <input type="file" name="upimage" id="inputimage" onchange="previewImage(this)" multiple class="position-relative" />
                                     <div id="previewimage" class="setpreviewimg"></div>
                                 </div>
                             </div>
