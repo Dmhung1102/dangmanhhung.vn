@@ -178,17 +178,20 @@ $dataPopular = $stmtPopular->fetchAll();
                         <div class="search-proparty">
                             <h3>
                                 <?php
-                                $soluong = count($dataHouse) ;
-                                echo  $soluong. '  Properties';
+                                $soluong = count($dataHouse);
+                                echo $soluong . '  Properties';
                                 ?>
                             </h3>
                             <div class="search-form">
                                 <div class="row">
                                     <div class="form-group">
                                         <form action="" method="get">
-                                            <input type="text" class="form-control text-dark" placeholder="Search your keyword" name="search" >
+                                            <input type="text" class="form-control text-dark"
+                                                   placeholder="Search your keyword" name="search">
                                             <button class="submit-icon"
-                                                    value="<?php if (isset($_GET['search'])) {echo $_GET['search']; }?>">
+                                                    value="<?php if (isset($_GET['search'])) {
+                                                        echo $_GET['search'];
+                                                    } ?>">
                                                 <i class="fa-solid fa-magnifying-glass"></i>
                                             </button>
                                         </form>
@@ -196,57 +199,68 @@ $dataPopular = $stmtPopular->fetchAll();
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Sort By
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort By
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="?sort=area" ">Area</a></li>
                                     <li><a class="dropdown-item" href="?sort=pricemin">Price (Min -> Max)</a></li>
                                     <li><a class="dropdown-item" href="?sort=pricemax">Price (Max -> Min)</a></li>
                                 </ul>
-                              </div>
-                           <div class="list-icon-right">
+                            </div>
+                            <div class="list-icon-right">
                                 <i class="fa-solid fa-list"></i>
-                           </div>
+                            </div>
                         </div>
                         <div class="w3-content mt-5">
                             <div class="mySlides">
                                 <div class="list-proparty">
                                     <div class="row ">
-                                        <?php  foreach ($dataHouse as $datahousekey => $houseid): ?>
-                                        <div class="col-lg-6 mb-3">
-                                            <a href="./proparty_details.php?id= <?= $houseid['id']?>"><img src="photo/<?= $houseid['name']?>"></a>
-                                        </div>
-                                        <div class="col-lg-6 ">
-                                            <div class="in4-apartment p-3">
-                                                <div class="propartes-wrap-details">
-                                                    <h4 class="mt-2">
-                                                        <?= $houseid['title'] ?>
-                                                    </h4>
-                                                    <ul class="propartes-inner">
-                                                        <li>
-                                                            <i class="fa-solid fa-location-dot"></i>
-                                                            <?= $houseid['area']?>, <?= $houseid['locationdetails']?>, <?= $houseid['location'] ?>
-                                                        </li>
-                                                        <li>
-                                                            <a href="" class="text-light">For <?= $houseid['purpose']?></a>
-                                                        </li>
-                                                    </ul>
-                                                    <p class="fs-6"><?= $houseid['description'] ?></p>
-                                                    <span>$ <?= number_format($houseid['price'])?></span>
-                                                    <ul>
-                                                        <li>Bedrooms : <?= $houseid['bedrooms']?></li>
-                                                        <li>Bathrooms : <?= $houseid['bathrooms']?></li>
-                                                        <li>Size :<?=  $ceiled =  ceil($area = $houseid['width'] * $houseid['length']) ?> sqft</li>
-                                                    </ul>
-                                                    <ul>
-                                                        <li>Yearbuilding : <?= $houseid['yearbuilding']?></li>
-                                                        <li class="text-capitalize">Equipment : <?= $houseid['equipment']?></li>
-                                                        <li class="text-capitalize">Status: <?= $houseid['status']?></li>
-                                                    </ul>
+                                        <?php foreach ($dataHouse as $datahousekey => $houseid): ?>
+                                            <div class="col-lg-6 mb-3">
+                                                <a href="./proparty_details.php?id= <?= $houseid['id'] ?>"><img
+                                                        src="data:image/jpeg;base64,<?php echo base64_encode($houseid['data']); ?>"
+                                                        alt="<?php echo $houseid['name']; ?>"></a>
+                                            </div>
+                                            <div class="col-lg-6 ">
+                                                <div class="in4-apartment p-3">
+                                                    <div class="propartes-wrap-details">
+                                                        <h4 class="mt-2">
+                                                            <?= $houseid['title'] ?>
+                                                        </h4>
+                                                        <ul class="propartes-inner">
+                                                            <li>
+                                                                <i class="fa-solid fa-location-dot"></i>
+                                                                <?= $houseid['area'] ?>
+                                                                , <?= $houseid['locationdetails'] ?>
+                                                                , <?= $houseid['location'] ?>
+                                                            </li>
+                                                            <li>
+                                                                <a href=""
+                                                                   class="text-light">For <?= $houseid['purpose'] ?></a>
+                                                            </li>
+                                                        </ul>
+                                                        <p class="fs-6"><?= $houseid['description'] ?></p>
+                                                        <span>$ <?= number_format($houseid['price']) ?></span>
+                                                        <ul>
+                                                            <li>Bedrooms : <?= $houseid['bedrooms'] ?></li>
+                                                            <li>Bathrooms : <?= $houseid['bathrooms'] ?></li>
+                                                            <li>Size
+                                                                :<?= $ceiled = ceil($area = $houseid['width'] * $houseid['length']) ?>
+                                                                sqft
+                                                            </li>
+                                                        </ul>
+                                                        <ul>
+                                                            <li>Yearbuilding : <?= $houseid['yearbuilding'] ?></li>
+                                                            <li class="text-capitalize">Equipment
+                                                                : <?= $houseid['equipment'] ?></li>
+                                                            <li class="text-capitalize">
+                                                                Status: <?= $houseid['status'] ?></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
@@ -255,7 +269,8 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="list-proparty">
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <a href="./proparty_details.php"><img src="./assets/img/proparty-details/png8.jpg" alt=""></a>
+                                            <a href="./proparty_details.php"><img
+                                                    src="./assets/img/proparty-details/png8.jpg" alt=""></a>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="in4-apartment p-3">
@@ -299,7 +314,8 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="list-proparty">
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <a href="./proparty_details.php"><img src="./assets/img/proparty-details/png10.png" alt=""></a>
+                                            <a href="./proparty_details.php"><img
+                                                    src="./assets/img/proparty-details/png10.png" alt=""></a>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="in4-apartment p-3">
@@ -345,7 +361,8 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="list-proparty">
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <a href="./proparty_details.php"><img src="./assets/img/proparty-details/png10.png" alt=""></a>
+                                            <a href="./proparty_details.php"><img
+                                                    src="./assets/img/proparty-details/png10.png" alt=""></a>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="in4-apartment p-3">
@@ -389,7 +406,8 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="list-proparty">
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <a href="./proparty_details.php"><img src="./assets/img/proparty-details/png10.png" alt=""></a>
+                                            <a href="./proparty_details.php"><img
+                                                    src="./assets/img/proparty-details/png10.png" alt=""></a>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="in4-apartment p-3">
@@ -431,10 +449,10 @@ $dataPopular = $stmtPopular->fetchAll();
                                     </div>
                                 </div>
                             </div>
-                        </div>                      
+                        </div>
                         <div class="w3-center mb-5">
                             <div class="section">
-                                <button class="rounded-circle " onclick="plusDivs(-1)">❮❮ </button>
+                                <button class="rounded-circle " onclick="plusDivs(-1)">❮❮</button>
                             </div>
                             <button class="rounded-circle" onclick="currentDiv(1)">1</button>
                             <button class="rounded-circle" onclick="currentDiv(2)">2</button>
@@ -461,13 +479,13 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="categories-right text-center">
                                     <ul>
                                         <li> (<?php
-                                            $soluong = count($dataRent) ;
-                                            echo  $soluong ;
+                                            $soluong = count($dataRent);
+                                            echo $soluong;
                                             ?>)
                                         </li>
                                         <li>(<?php
-                                            $soluong = count($dataSell) ;
-                                            echo  $soluong ;
+                                            $soluong = count($dataSell);
+                                            echo $soluong;
                                             ?>)
                                         </li>
                                     </ul>
@@ -485,7 +503,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <li>
                                                 Ninh Binh
                                                 <span><?php
-                                                    echo  $dataNB[0] ;
+                                                    echo $dataNB[0];
                                                     ?></span>
                                             </li>
                                         </a>
@@ -493,7 +511,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <li>
                                                 Hoa Binh
                                                 <span><?php
-                                                    echo  $dataHB[0] ;
+                                                    echo $dataHB[0];
                                                     ?></span>
                                             </li>
                                         </a>
@@ -501,7 +519,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <li>
                                                 Ha Noi
                                                 <span><?php
-                                                    echo  $dataHN[0] ;
+                                                    echo $dataHN[0];
                                                     ?></span>
                                             </li>
                                         </a>
@@ -514,11 +532,11 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="comment">
                                     <h3>Popular Proparty</h3>
                                 </div>
-                                <?php foreach ($dataPopular as $housell => $propertysell):?>
+                                <?php foreach ($dataPopular as $housell => $propertysell): ?>
                                     <div class="popular-feed-inner border-bottom mt-2">
-                                        <a href="proparty_details.php?id= <?= $propertysell['id']?>">
+                                        <a href="proparty_details.php?id= <?= $propertysell['id'] ?>">
                                             <div class="thumbnail mt-2 ">
-                                                <img src="photo/<?= $propertysell['name']?>" >
+                                                <img src="photo/<?= $propertysell['name'] ?>">
                                             </div>
                                         </a>
 
@@ -527,13 +545,13 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <ul>
                                                 <li>
                                                     <i class="fa-solid fa-location-dot"></i>
-                                                    <p><?= $propertysell['location']?></p>
+                                                    <p><?= $propertysell['location'] ?></p>
 
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
