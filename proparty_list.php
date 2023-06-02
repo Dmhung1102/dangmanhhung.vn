@@ -2,26 +2,28 @@
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['locationindex']) || isset($_GET['purposeindex'])|| isset($_GET['search']) || isset($_GET['sort'])  || isset($_GET['pricesort'])) {
-   if (isset($_GET['locationindex']) && isset($_GET['purposeindex']) && isset($_GET['pricesort'])) {
-       $locationindex = $_GET['locationindex'];
-       $purposeindex = $_GET['purposeindex'];
-       $pricesort = $_GET['pricesort'];
-       if ($pricesort=='<100k') {
-           $priceget = 'price < 100000';
-       }
-       if ($pricesort=='>100k') {
-           $priceget = 'price > 100000';
-       }
-       if ($pricesort=='100k-1000k') {
-           $priceget = 'price BETWEEN 100000 AND 1000000';
-       }
-       $sqlQuery = "SELECT * FROM house as h JOIN  housealbum as a ON h.id = a.houseid WHERE location LIKE '%$locationindex%' AND purpose LIKE '%$purposeindex' AND $priceget AND purposeimg = 'image'" ;
-   }
+    if (isset($_GET['locationindex']) && isset($_GET['purposeindex']) && isset($_GET['pricesort'])) {
+        $locationindex = $_GET['locationindex'];
+        $purposeindex = $_GET['purposeindex'];
+        $pricesort = $_GET['pricesort'];
+        if ($pricesort=='<100k') {
+            $priceget = 'price < 100000';
+        }
+        if ($pricesort=='>100k') {
+            $priceget = 'price > 100000';
+        }
+        if ($pricesort=='100k-1000k') {
+            $priceget = 'price BETWEEN 100000 AND 1000000';
+        }
+        $sqlQuery = "SELECT * FROM house as h JOIN  housealbum as a ON h.id = a.houseid WHERE location LIKE '%$locationindex%' AND purpose LIKE '%$purposeindex' AND $priceget AND purposeimg = 'image'" ;
+    }
 
     if (isset($_GET['purpose'])) {
         $purpose = $_GET['purpose'];
-        $sqlQuery = "SELECT h.equipment as equipment, h.livingroom as livingroom, h.status as status, h.locationdetails as locationdetails, h.length as length, h.width as width, h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, a.name as name, a.purposeimg as purposeimg 
-                        FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' AND purpose = '$purpose'";
+        $sqlQuery = "SELECT h.status as status ,h.equipment as equipment ,h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
+        FROM user as u 
+        JOIN  house as h  ON u.id = h.userid 
+        JOIN housealbum as a ON a.houseid = h.id WHERE purposeimg = 'image' AND purpose = '$purpose'";
     }
     if (isset($_GET['location'])) {
         $location = $_GET['location'];
