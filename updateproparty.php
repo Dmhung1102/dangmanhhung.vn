@@ -117,19 +117,21 @@ if(isset($_POST['saveupdate'])){
    amenities = '$amenities', iframe = '$iframe',purpose = '$purpose', WHERE id =  '$_SESSION[id]'";
 
 
-    if (!empty($_FILES['upimage']['name'])) {
-        // Nếu có file được chọn, thực hiện update hình ảnh
+    if (!empty($_FILES['upimage']['name'][0])) {
         $purposeimg = 'image';
-        $errors = array();
-        $file_parts = explode('.', $_FILES['upimage']['name']);
-        $file_ext = strtolower(end($file_parts));
-        $expensions = array("jpeg", "jpg", "png");
-        $name = $_FILES['upimage']['name'];
 
-        $sql = "UPDATE housealbum SET  name = '$name' WHERE purposeimg = '$purposeimg' AND houseid = $id";
-        $conn->query($sql);
-    } else {
+        $upimage = $_FILES['upimage'];
+        $name = $upimage['name'];
+        $data = file_get_contents($upimage['tmp_name']);
 
+        // Thực hiện câu lệnh UPDATE trong SQL
+        $sql = "UPDATE housealbum SET name = :name, data = :data WHERE purposeimg = :purposeimg AND houseid = :houseid";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':data', $data, PDO::PARAM_LOB);
+        $stmt->bindParam(':purposeimg', $purposeimg);
+        $stmt->bindParam(':houseid', $id);
+        $stmt->execute();
     }
 
     if(!empty($_FILES['upimages']['name'][0])) {

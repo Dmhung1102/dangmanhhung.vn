@@ -130,20 +130,21 @@ if(isset($_POST['save'])){
     $houseid = $row[0];
     echo $houseid;
 
+
     if (isset($_FILES['upimage'])) {
         $purposeimg = 'image';
-        $upimages = $_FILES['upimages'];
+        $upimage = $_FILES['upimage'];
         // Lặp qua từng tệp được tải lên
-        for ($i = 0; $i < count($upimages['name']); $i++) {
-            $name = $upimages['name'][$i];
-            $data = file_get_contents($upimages['tmp_name'][$i]);
 
-            // Thêm dữ liệu ảnh vào SQL bằng PDO
-            $stmt = $connect->prepare("INSERT INTO housealbum (houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
-            $stmt->bindParam(1, $name);
-            $stmt->bindParam(2, $data, PDO::PARAM_LOB);
-            $stmt->execute();
-        }
+        $name = $upimage['name'];
+        $data = file_get_contents($upimage['tmp_name']);
+
+        // Thêm dữ liệu ảnh vào SQL bằng PDO
+        $stmt = $connect->prepare("INSERT INTO housealbum (houseid, name, data, purposeimg) VALUES ('$houseid', ?, ?, '$purposeimg')");
+        $stmt->bindParam(1, $name);
+        $stmt->bindParam(2, $data, PDO::PARAM_LOB);
+        $stmt->execute();
+
     }
 
     if (isset($_FILES['upimages'])) {
