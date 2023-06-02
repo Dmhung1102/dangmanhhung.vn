@@ -114,7 +114,8 @@ if(isset($_POST['saveupdate'])){
    purpose = '$purpose', description = '$description', yearbuilding = '$yearbuilding', amenities = '$amenities',
    price = '$price', floors = '$floors', orienten = '$orienten', length = '$length', width = '$width', height = '$height',
    ground = '$ground', poolsize = '$poolsize', additionalroom = '$additionalroom', description = '$description', equipment = '$equipment',
-   amenities = '$amenities', iframe = '$iframe',purpose = '$purpose', WHERE id =  '$_SESSION[id]'";
+   amenities = '$amenities', iframe = '$iframe',purpose = '$purpose' WHERE id =  '$_SESSION[id]'";
+    $conn->query($sql);
 
 
     if (!empty($_FILES['upimage']['name'][0])) {
