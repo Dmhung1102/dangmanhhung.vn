@@ -82,7 +82,7 @@ $stmtSell = $connect->prepare($sqlQuerySell);
 $stmtSell ->execute();
 $dataSell = $stmtSell->fetchAll();
 
-$sqlQueryPopular = "SELECT  h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'   LIMIT 3";
+$sqlQueryPopular = "SELECT  a.data as data ,h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'   LIMIT 3";
 $stmtPopular = $connect->prepare($sqlQueryPopular);
 $stmtPopular ->execute();
 $dataPopular = $stmtPopular->fetchAll();
@@ -532,28 +532,28 @@ $dataPopular = $stmtPopular->fetchAll();
                                 <div class="comment">
                                     <h3>Popular Proparty</h3>
                                 </div>
-                                <?php foreach ($dataPopular as $housell => $propertysell): ?>
+                                <?php foreach ($dataPopular as $popularproperty):?>
                                     <div class="popular-feed-inner border-bottom mt-2">
-                                        <a href="proparty_details.php?id= <?= $propertysell['id'] ?>">
-                                            <div class="thumbnail mt-2 ">
-                                                <img src="photo/<?= $propertysell['name'] ?>">
-                                            </div>
-                                        </a>
+                                        <div class="thumbnail mt-2 ">
+                                            <a href="proparty_details.php?id=<?= $popularproperty['id']?>">
 
-                                        <div class="details mt-2 py-2">
-                                            <h5><?= $propertysell['title'] ?></h5>
+                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($popularproperty['data']); ?>"
+                                                     alt="<?php echo $popularproperty['name']; ?>">
+
+                                            </a>
+                                        </div>
+                                        <div class="details mt-2">
+                                            <h5><?= $popularproperty['title'] ?></h5>
                                             <ul>
                                                 <li>
                                                     <i class="fa-solid fa-location-dot"></i>
-                                                    <p><?= $propertysell['location'] ?></p>
-
+                                                    <p><?= $popularproperty['location']?></p>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
+                                <?php endforeach;?>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

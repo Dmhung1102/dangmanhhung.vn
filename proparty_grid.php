@@ -148,7 +148,7 @@ $stmtSell = $connect->prepare($sqlQuerySell);
 $stmtSell ->execute();
 $dataSell = $stmtSell->fetch();
 
-$sqlQueryPopular = "SELECT  h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'   LIMIT 3";
+$sqlQueryPopular = "SELECT  a.data as data ,h.id as id, h.status as status, h.location as location,  h.title as title, h.type as type, a.name as name FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'   LIMIT 3";
 $stmtPopular = $connect->prepare($sqlQueryPopular);
 $stmtPopular ->execute();
 $dataPopular = $stmtPopular->fetchAll();
