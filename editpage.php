@@ -10,22 +10,22 @@ $stmt->execute();
 $house = $stmt -> fetch();
 $amenities = json_decode($house['amenities'], true);
 
-$sqlQueryImage = "SELECT name FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'image' AND h.id= $id";
+$sqlQueryImage = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'image' AND h.id= $id";
 $stmtImage = $connect->prepare($sqlQueryImage);
 $stmtImage ->execute();
 $image = $stmtImage->fetch();
 
-$sqlQueryAlbum = "SELECT name FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'album' AND h.id= $id";
+$sqlQueryAlbum = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'album' AND h.id= $id";
 $stmtAlbum = $connect->prepare($sqlQueryAlbum);
 $stmtAlbum ->execute();
 $album = $stmtAlbum->fetchAll();
 
-$sqlQueryEstate = "SELECT name FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'estate' AND h.id= $id";
+$sqlQueryEstate = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'estate' AND h.id= $id";
 $stmtEstate = $connect->prepare($sqlQueryEstate);
 $stmtEstate->execute();
 $estate= $stmtEstate -> fetchAll();
 
-$sqlQueryFloor= "SELECT name FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'floor' AND h.id= $id";
+$sqlQueryFloor= "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE  a.purposeimg = 'floor' AND h.id= $id";
 $stmtFloor= $connect->prepare($sqlQueryFloor);
 $stmtFloor->execute();
 $floor= $stmtFloor -> fetchAll();
@@ -132,18 +132,19 @@ $floor= $stmtFloor -> fetchAll();
                                 <div class="proparty-type">
                                     <div class="form-label">Image</div>
                                     <div class="input-imgs">
-                                        <!--                                    <input type="text" class="form-control" name="image" value="-->
-                                        <?php //=$house['image'] ?><!--" >-->
                                         <label for="image_uploads" class="position-absolute">Choose image to update
                                             (PNG, JPG)</label>
                                         <input type="file" name="upimage" id="inputimage" onchange="previewImage(this)"
                                                class="position-relative" value="<?= $image['name'] ?>"/>
 
-                                        <div id="previewimage" class="setpreviewimg mt-4"></div>
+                                        <div id="previewimage" class="setpreviewimg mt-4"> </div>
                                         <?php
                                         echo "<a class='delete-album' href = './deleteimg.php?name=". $image['name'] ."&houseid=" . $id ."&purpose=image'>X</a>";
-                                        echo "<img src='photo/" . $image['name'] . "' >";
+
                                         ?>
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($image['data']); ?>">
+
+
                                     </div>
                                 </div>
                             </div>
@@ -153,11 +154,11 @@ $floor= $stmtFloor -> fetchAll();
                                     <label for="image_uploads" class="position-absolute">Choose images to upload (PNG, JPG)</label>
                                     <input type="file" name="upimages[]" id="input" onchange="previewImage(this)" multiple class="position-relative" />
                                     <div id="preview" class="setpreviewimg mt-4">
-                                        <?php foreach ($album as $albumkey => $imgalbum): ?>
+                                        <?php foreach ($album as $imgalbum): ?>
                                             <?php
                                             echo "<a class='delete-album' href = './deleteimg.php?name=". $imgalbum['name'] ."&houseid=" . $id ."&purpose=album'>X</a>";
-                                            echo "<img src='photo/" . $imgalbum['name'] . "' >";
                                             ?>
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($imgalbum['data']); ?>">
                                         <?php endforeach; ?>
                                     </div>
 
@@ -169,11 +170,11 @@ $floor= $stmtFloor -> fetchAll();
                                     <label for="image_uploads" class="position-absolute">Choose images estate location to upload (PNG, JPG)</label>
                                     <input type="file" name="upestate[]" id="inputestate" onchange="previewImage(this)" multiple class="position-relative" />
                                     <div id="previewestate" class="setpreviewimg mt-4">
-                                        <?php foreach ($estate as $estatekey => $imgestate): ?>
+                                        <?php foreach ($estate as $imgestate): ?>
                                             <?php
                                             echo "<a class='delete-album' href = './deleteimg.php?name=". $imgestate['name'] ."&houseid=" . $id ."&purpose=estate'>X</a>";
-                                            echo "<img src='photo/" . $imgestate['name'] . "' >";
                                             ?>
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($imgestate['data']); ?>">
                                         <?php endforeach; ?>
                                     </div>
 
@@ -185,11 +186,11 @@ $floor= $stmtFloor -> fetchAll();
                                     <label for="image_uploads" class="position-absolute">Choose images floor plans to upload (PNG, JPG)</label>
                                     <input type="file" name="upfloor[]" id="inputfloor" onchange="previewImage(this)" multiple class="position-relative" />
                                     <div id="previewfloor" class="setpreviewimg mt-4">
-                                        <?php foreach ($floor as $floorkey => $imgfloor): ?>
+                                        <?php foreach ($floor as $imgfloor): ?>
                                             <?php
                                             echo "<a class='delete-album' href = './deleteimg.php?name=". $imgfloor['name'] ."&houseid=" . $id ."&purpose=floor'>X</a>";
-                                            echo "<img src='photo/" . $imgfloor['name'] . "' >";
                                             ?>
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($imgfloor['data']); ?>">
                                         <?php endforeach; ?>
                                     </div>
 
