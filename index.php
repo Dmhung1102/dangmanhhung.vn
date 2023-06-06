@@ -26,7 +26,7 @@ $stmtRent = $connect->prepare($sqlQuery);
 $stmtRent ->execute();
 $dataRent = $stmtRent->fetchAll();
 
-$sqlQueryBlog = "SELECT  b.title as title,b.description as description,.b.image as image,b.id as id, u.name as username FROM user as u JOIN blog as b ON u.id = b.userid ORDER BY b.id DESC LIMIT 3 ";
+$sqlQueryBlog = "SELECT  b.title as title,b.description as description,b.image as image,b.id as id, u.name as username FROM user as u JOIN blog as b ON u.id = b.userid ORDER BY b.id DESC LIMIT 3 ";
 $stmtBlog = $connect->prepare($sqlQueryBlog);
 $stmtBlog -> execute();
 $dataBlog = $stmtBlog->fetchAll();
