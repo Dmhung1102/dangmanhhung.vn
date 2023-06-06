@@ -6,7 +6,7 @@ $sqlQuery = "SELECT * FROM agent";
 $stmt = $connect->prepare($sqlQuery);
 $stmt->execute();
 $dataAgent = $stmt -> fetchAll();
-var_dump($_SESSION['username']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 $sqlQueryBlogid = "SELECT b.userexperience as userexperience ,b.image as image, b.album as album, b.description as description, b.title as title, b.titlebot as titlebot, b.descriptionbot as descriptionbot ,b.id as id, u.name as username FROM user as u JOIN blog as b ON u.id = b.userid  ORDER BY b.id ";
