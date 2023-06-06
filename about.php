@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 $sqlQuery = "SELECT * FROM agent";
@@ -51,7 +52,14 @@ $dataAgent = $stmt -> fetchAll();
                                     <a href="./proparty_grid.php">Properties</a>
                                 </li>
                                 <li>
-                                    <a href="./add_page.php">Pages</a>
+                                    <?php
+                                    if (isset($_SESSION['username']) && $_SESSION['username'] == true) {
+                                        echo " <a href=add_page.php>Pages</a>";
+                                    }
+                                    else {
+                                        echo "<a href=./login.php>Pages</a>";
+                                    }
+                                    ?>
                                 </li>
                                 <li>
                                     <a href="./blog.php">Blog</a>
