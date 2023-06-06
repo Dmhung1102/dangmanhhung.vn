@@ -823,56 +823,6 @@ $dataHN = $stmtHN->fetchAll();
                             </div>
                         </div>
                     <?php endforeach;?>
-                    <!--            <div class="col-lg-4">-->
-                    <!--              <div class="single-blog-wrap">-->
-                    <!--                <div class="blog-img" style="background-image: url(./assets/img/blog-area/blog-area-2.png);">-->
-                    <!--                </div>-->
-                    <!--              </div>-->
-                    <!--                <div class="blog-wrap-details p-3">-->
-                    <!--                    <div class="blog-inner d-flex p-0">-->
-                    <!--                        <i class="fa-solid fa-user me-2">-->
-                    <!--                        </i>-->
-                    <!--                        <p>By Admin</p>-->
-                    <!--                        <i class="fa-solid fa-calendar-days mx-2">-->
-                    <!--                        </i>-->
-                    <!--                        <p> Marce 9 , 2020</p>-->
-                    <!--                    </div>-->
-                    <!--                    <h4 class="mt-2">-->
-                    <!--                        <p class="text-dark" href="./single_blog.php">Family House</p>-->
-                    <!--                    </h4>-->
-                    <!--                    <p class="text-dark">-->
-                    <!--                        House ipsum dolor consectetur adipisicing elit, sed do eius Lorem ipsum dolo ame conse.-->
-                    <!--                    </p>-->
-                    <!--                    <a href="./single_blog.php" class="btn btn-base">-->
-                    <!--                        <i class="fa-solid fa-arrow-right"></i>-->
-                    <!--                    </a>-->
-                    <!--                </div>-->
-                    <!--            </div>-->
-                    <!--            <div class="col-lg-4">-->
-                    <!--              <div class="single-blog-wrap">-->
-                    <!--                <div class="blog-img" style="background-image: url(./assets/img/blog-area/blog-area-3.png);">-->
-                    <!--                </div>-->
-                    <!--              </div>-->
-                    <!--                <div class="blog-wrap-details p-3">-->
-                    <!--                    <div class="blog-inner d-flex p-0">-->
-                    <!--                        <i class="fa-solid fa-user me-2">-->
-                    <!--                        </i>-->
-                    <!--                        <p>By Admin</p>-->
-                    <!--                        <i class="fa-solid fa-calendar-days mx-2">-->
-                    <!--                        </i>-->
-                    <!--                        <p> Marce 9 , 2020</p>-->
-                    <!--                    </div>-->
-                    <!--                    <h4 class="mt-2">-->
-                    <!--                        <p class="text-dark" href="./single_blog.php">Family House</p>-->
-                    <!--                    </h4>-->
-                    <!--                    <p class="text-dark">-->
-                    <!--                        House ipsum dolor consectetur adipisicing elit, sed do eius Lorem ipsum dolo ame conse.-->
-                    <!--                    </p>-->
-                    <!--                    <a href="./single_blog.php" class="btn btn-base">-->
-                    <!--                        <i class="fa-solid fa-arrow-right"></i>-->
-                    <!--                    </a>-->
-                    <!--                </div>-->
-                    <!--            </div>-->
                 </div>
             </div>
         </div>
