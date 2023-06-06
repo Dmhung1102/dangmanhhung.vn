@@ -30,7 +30,7 @@ $sqlQueryBlog = "SELECT  b.title as title,b.description as description,b.image a
 $stmtBlog = $connect->prepare($sqlQueryBlog);
 $stmtBlog -> execute();
 $dataBlog = $stmtBlog->fetchAll();
-var_dump($dataBlog);
+
 
 $sqlQuery = "SELECT * FROM agent";
 $stmt = $connect->prepare($sqlQuery);
