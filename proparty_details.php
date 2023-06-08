@@ -508,16 +508,17 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <?php foreach ($dataPopular as $housesell => $houseid): ?>
                                             <div class="popular-feed-inner border-bottom p-2">
                                                 <div class="thumbnail mt-2 ">
-                                                    <a href="./proparty_details.php?id= <?= $houseid['id'] ?> ">
-                                                        <img src="photo/<?= $houseid['name'] ?>" alt="">
+                                                    <a href="./proparty_details.php?id=<?= $houseid['id']?> ">
+                                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($houseid['data']); ?>"
+                                                             alt="<?php echo $houseid['name']; ?>">
                                                     </a>
                                                 </div>
                                                 <div class="details mt-3">
-                                                    <h5><?= $houseid['title'] ?></h5>
+                                                    <h5><?= $houseid['title']?></h5>
                                                     <ul>
                                                         <li>
                                                             <i class="fa-solid fa-location-dot"></i>
-                                                            <p><?= $houseid['location'] ?></p>
+                                                            <p><?= $houseid['location']?></p>
                                                         </li>
                                                     </ul>
                                                 </div>
