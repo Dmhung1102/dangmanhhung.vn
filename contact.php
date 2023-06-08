@@ -43,7 +43,15 @@
                                         <a href="./proparty_grid.php">Properties</a>
                                     </li>
                                     <li>
-                                        <a href="./add_page.php">Pages</a>
+                                        <?php
+                                        if (isset($_SESSION['username']) && $_SESSION['username'] == true) {
+                                            echo " <a href=add_page.php>Pages</a>";
+                                        }
+                                        else {
+                                            echo "<a href=./login.php>Pages</a>";
+                                        }
+                                        ?>
+                                    </li>
                                     </li>
                                     <li>
                                         <a href="./blog.php">Blog</a>
