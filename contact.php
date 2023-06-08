@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./assets/icon/css/all.min.css">
     <link rel="stylesheet" href="./assets/icon/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" href="./assets/slick-1.8.1/slick/slick.css">
     <link rel="stylesheet" href="./assets/slick-1.8.1/slick/slick-theme.css">
 </head>

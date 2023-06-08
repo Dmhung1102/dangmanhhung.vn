@@ -6,7 +6,6 @@ $name = $_GET['name'];
 $purpose = $_GET['purpose'];
 $houseid = $_GET['houseid'];
 $sqlQueryDeleteAlbum = "DELETE FROM housealbum WHERE name =  '$name' AND purposeimg = '$purpose' AND houseid = '$houseid'  ";
-var_dump($sqlQueryDeleteAlbum);
 $stmt2 = $connect->prepare($sqlQueryDeleteAlbum);
 $stmt2 ->execute();
 

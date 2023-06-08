@@ -366,10 +366,13 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <h3>Floor Plans</h3>
                                         <div id="sync4" class="owl-carousel ">
                                             <?php foreach ($datafloor as $row): ?>
-                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
-                                                     alt="<?php echo $row['name']; ?>">
+                                                <img
+                                                    src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                                    alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
                                         </div>
+                                    </div>
+                                </div>
                                 <div class="property-amenities mt-5">
                                     <div class="nearby-area-details">
                                         <h3>Some properties nearby </h3>
@@ -377,7 +380,9 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <div class="nearby-area d-flex mt-3 justify-content-between">
 
                                                 <div class="nearby-in4 px-2 d-flex">
-                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($nearby['data']); ?>" alt="<?php echo $nearby['name']; ?>">
+                                                    <img
+                                                        src="data:image/jpeg;base64,<?php echo base64_encode($nearby['data']); ?>"
+                                                        alt="<?php echo $nearby['name']; ?>">
                                                     <div class="nearby-in4img px-2">
                                                         <h5><?= $nearby['title'] ?></h5>
                                                         <p> Location: <?= $nearby['location'] ?></p>
@@ -385,30 +390,12 @@ $dataPopular = $stmtPopular->fetchAll();
                                                     </div>
                                                 </div>
                                                 <div class="nearby-rebviews">
-                                                    <h4>Status: <?= $nearby['status']?></h4>
+                                                    <h4>Status: <?= $nearby['status'] ?></h4>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-                                <!--                                    <div class="page-statistics-area mt-5">-->
-                                <!--                                        <div class="property-amenities">-->
-                                <!--                                            <div class="page-statistics-top">-->
-                                <!--                                                <div class="page-statistics-left">-->
-                                <!--                                                    <h3>Page statistics</h3>-->
-                                <!--                                                </div>-->
-                                <!--                                                <div class="page-stactistics-right">-->
-                                <!--                                                    <li>Hour</li>-->
-                                <!--                                                    <li>Weekly</li>-->
-                                <!--                                                    <li>Monthly</li>-->
-                                <!--                                                </div>-->
-                                <!--                                            </div>-->
-                                <!--                                            <div class="page-statistics-bot">-->
-                                <!--                                                <img src="./assets/img/page-statistics/page-statistics-img-1.png"-->
-                                <!--                                                    alt="">-->
-                                <!--                                            </div>-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
                                 <div class="estate-agent-area mt-5">
                                     <div class="property-amenities d-flex">
                                         <div class="circle-avt px-3">
@@ -431,14 +418,14 @@ $dataPopular = $stmtPopular->fetchAll();
                                     <div class="property-amenities">
                                         <h3>Location On Google Maps</h3>
                                         <div class="location-gg">
-                                            <iframe class="w-100" src="<?= $house['iframe']?>" alt="None data"
-                                                    width="600" height="450" style="border:0;" allowfullscreen=""
+                                            <iframe class="w-100" src="<?= $house['iframe'] ?>" alt="None data"
+                                                    width="600" height="450" style="border:0;"
+                                                    allowfullscreen=""
                                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                             </iframe>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-lg-4 mt-5 px-4">
                                 <div class="price-area pb-0">
                                     <div class="comment">
