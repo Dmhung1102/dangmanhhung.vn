@@ -57,7 +57,7 @@ $stmtSell = $connect->prepare($sqlQuerySell);
 $stmtSell ->execute();
 $dataSell = $stmtSell->fetch();
 
-$sqlQueryPopular = "SELECT  * FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'album'  LIMIT 3";
+$sqlQueryPopular = "SELECT  * FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image'  LIMIT 3";
 $stmtPopular = $connect->prepare($sqlQueryPopular);
 $stmtPopular ->execute();
 $dataPopular = $stmtPopular->fetchAll();
