@@ -246,9 +246,9 @@ $dataPopular = $stmtPopular->fetchAll();
                         <div class="row">
                             <div class="col-lg-8 col-12 mt-5">
                                 <div class="property-amenities">
-                                    <h3><?= $house['title']?></h3>
+                                    <h3><?= $house['title'] ?></h3>
                                     <p>
-                                        <?= $house['description']?>
+                                        <?= $house['description'] ?>
                                     </p>
                                 </div>
                                 <div class="property-amenities mt-5">
@@ -256,20 +256,20 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <h3>Detailed Price</h3>
                                         <div class="detailed-price">
                                             <span class="title-price text-secondary">Detailed price</span>
-                                            <span class="fw-bold fs-5"><?=number_format($house['price']) ?>$</span>
+                                            <span class="fw-bold fs-5"><?= number_format($house['price']) ?>$</span>
                                             <span
                                                 class="title-price">~<?= round($house['price'] / ($house['width'] * $house['length'])) ?>$
                                                     /sqft</span>
                                         </div>
                                         <div class="detailed-area">
                                             <span class="title-price text-secondary">Area</span>
-                                            <span class="fw-bold fs-5"><?= $house['width'] * $house['length']?>
+                                            <span class="fw-bold fs-5"><?= $house['width'] * $house['length'] ?>
                                                     sqft</span>
                                         </div>
                                         <div class="negotiatied-price">
                                             <span class="title-price text-secondary">Negotiated price</span>
                                             <span
-                                                class="title-price text-capitalize fs-5 fw-bold"><?= $house['negotiatedprice']?></span>
+                                                class="title-price text-capitalize fs-5 fw-bold"><?= $house['negotiatedprice'] ?></span>
                                         </div>
                                         <div class="legaldocuments">
                                             <span class="title-price text-secondary">Legal documents</span>
@@ -302,7 +302,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <div class="col-md-4 col-6">
                                             <ul>
                                                 <li>Orienten: <?= $house['orienten'] ?></li>
-                                                <li>Area: <?= $area =  $house['width'] * $house['length'] ?></li>
+                                                <li>Area: <?= $area = $house['width'] * $house['length'] ?></li>
                                                 <li>Garages: <?= $house['garages'] ?></li>
                                             </ul>
                                         </div>
@@ -317,9 +317,9 @@ $dataPopular = $stmtPopular->fetchAll();
                                                 ?>
                                                 <li class="w-25 ">
                                                     <i class="fa-solid fa-check"></i><span
-                                                        class="text-capitalize"><?= $option?></span>
+                                                        class="text-capitalize"><?= $option ?></span>
                                                 </li>
-                                            <?php endforeach;?>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -330,21 +330,21 @@ $dataPopular = $stmtPopular->fetchAll();
                                             <div class="col-sm-4 col-6">
                                                 <ul>
                                                     <li>Remodel Year :
-                                                        <?= $remodelyear = 2023 - $house ['yearbuilding']?></li>
+                                                        <?= $remodelyear = 2023 - $house ['yearbuilding'] ?></li>
 
-                                                    <li>Equipment: <?= $house ['equipment']?></li>
+                                                    <li>Equipment: <?= $house ['equipment'] ?></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4 col-6 p-0">
                                                 <ul>
-                                                    <li>Floor: <?= $house ['floors']?></li>
+                                                    <li>Floor: <?= $house ['floors'] ?></li>
 
-                                                    <li>Additional Room: <?= $house ['additionalroom']?></li>
+                                                    <li>Additional Room: <?= $house ['additionalroom'] ?></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4 col-6">
                                                 <ul>
-                                                    <li>Ground: <?= $house ['ground']?></li>
+                                                    <li>Ground: <?= $house ['ground'] ?></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -355,8 +355,9 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <h3>Estate Location</h3>
                                         <div id="sync3" class="owl-carousel ">
                                             <?php foreach ($dataEstate as $row): ?>
-                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
-                                                     alt="<?php echo $row['name']; ?>">
+                                                <img
+                                                    src="data:image/jpeg;base64,<?php echo base64_encode($row['data']); ?>"
+                                                    alt="<?php echo $row['name']; ?>">
                                             <?php endforeach; ?>
                                         </div>
                                     </div>
@@ -426,6 +427,7 @@ $dataPopular = $stmtPopular->fetchAll();
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             <div class="col-lg-4 mt-5 px-4">
                                 <div class="price-area pb-0">
                                     <div class="comment">
@@ -445,11 +447,11 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <div class="categories-right text-center">
                                             <ul>
                                                 <li> (<?php
-                                                    echo  $dataRent[0] ;
+                                                    echo $dataRent[0];
                                                     ?>)
                                                 </li>
                                                 <li>(<?php
-                                                    echo  $dataSell[0];
+                                                    echo $dataSell[0];
                                                     ?>)
                                                 </li>
                                             </ul>
@@ -506,16 +508,16 @@ $dataPopular = $stmtPopular->fetchAll();
                                         <?php foreach ($dataPopular as $housesell => $houseid): ?>
                                             <div class="popular-feed-inner border-bottom p-2">
                                                 <div class="thumbnail mt-2 ">
-                                                    <a href="./proparty_details.php?id= <?= $houseid['id']?> ">
-                                                        <img src="photo/<?= $houseid['name']?>" alt="">
+                                                    <a href="./proparty_details.php?id= <?= $houseid['id'] ?> ">
+                                                        <img src="photo/<?= $houseid['name'] ?>" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="details mt-3">
-                                                    <h5><?= $houseid['title']?></h5>
+                                                    <h5><?= $houseid['title'] ?></h5>
                                                     <ul>
                                                         <li>
                                                             <i class="fa-solid fa-location-dot"></i>
-                                                            <p><?= $houseid['location']?></p>
+                                                            <p><?= $houseid['location'] ?></p>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -524,7 +526,6 @@ $dataPopular = $stmtPopular->fetchAll();
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
