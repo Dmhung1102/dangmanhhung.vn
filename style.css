@@ -536,7 +536,28 @@ a {
 .navbar-nav a:hover{
     color: #5ba600 ;
 }
+.single-service-a {
+    box-shadow: 0px 3px 15px 0px;
+    border-radius: 0 0 5px 5px;
+    color:#000000;
+}
+.inner-single-service:hover {
+    color:#5ba600;
+}
+.service-area-home a:hover {
+    color: unset;
+}
 
+.navbar-nav a:hover{
+    color: #5ba600 ;
+}
+.thumbnail-circle img {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 47%;
+    transform: translate(-50%, -50%);
+}
 .navbar-bot i.fa-solid.fa-magnifying-glass {
     color: #fff;
     margin-right: 55px;

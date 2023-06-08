@@ -264,41 +264,44 @@ $dataHN = $stmtHN->fetchAll();
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4">
-                    <div class="single-service-warp">
-                        <div class="thumbnail-circle text-center rounded-circle ">
-                            <img src="./assets/img/png2.png" alt="">
+                    <a class="single-service-a" href="proparty_list.php?searchtype=Villa">
+                        <div class="single-service-warp">
+                            <div class="thumbnail-circle text-center rounded-circle ">
+                                <img src="./assets/img/logo/8b7a5b_5fb3cdf679364d9da6ddeff48e66de2b~mv2.png" alt="">
+                            </div>
+                            <div class="single-service-details text-center">
+                                <h4 class="inner-single-service">Villa</h4>
+                                <p class="inner-single-service">Lorem ipsum dolor sit consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            </div>
                         </div>
-                        <div class="single-service-details text-center">
-                            <h4>Sell Property</h4>
-                            <p>Lorem ipsum dolor sit consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                ut labore.</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4">
-                    <div class="single-service-warp">
-                        <div class="thumbnail-circle text-center rounded-circle">
-                            <img src="./assets/img/png3.png" alt="...">
+                    <a class="single-service-a" href="proparty_list.php?searchtype=Bungalow">
+                        <div class="single-service-warp">
+                            <div class="thumbnail-circle text-center rounded-circle">
+                                <img src="./assets/img/logo/image-asset.png" alt="...">
+                            </div>
+                            <div class="single-service-details text-center">
+                                <h4 class="inner-single-service">Bungalow</h4>
+                                <p class="inner-single-service">Lorem ipsum dolor sit consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            </div>
                         </div>
-                        <div class="single-service-details text-center">
-                            <h4>Daily Apartment</h4>
-                            <p>Lorem ipsum dolor sit consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                ut labore.</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4">
-                    <div class="single-service-warp">
-                        <div class="thumbnail-circle text-center rounded-circle">
-                            <img src="./assets/img/png4.png" alt="...">
+                    <a class="single-service-a" href="proparty_list.php?searchtype=Resort">
+                        <div class="single-service-warp">
+                            <div class="thumbnail-circle text-center rounded-circle">
+                                <img src="./assets/img/logo/Paradise-Resort-Logo-Template-PNG-Transparent.png" alt="...">
+                            </div>
+                            <div class="single-service-details text-center">
+                                <h4 class="inner-single-service">Resort</h4>
+                                <p class="inner-single-service">Lorem ipsum dolor sit consectetur adipisicing elit, sed do eius eiusmod tempor incididunt ut labore.
+                                </p>
+                            </div>
                         </div>
-                        <div class="single-service-details text-center">
-                            <h4>Family House</h4>
-                            <p>Lorem ipsum dolor sit consectetur adipisicing elit, sed do eius eiusmod tempor
-                                incididunt ut labore.
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

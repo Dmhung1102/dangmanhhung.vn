@@ -1,7 +1,7 @@
 <?php
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
-if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['locationindex']) || isset($_GET['purposeindex'])|| isset($_GET['search']) || isset($_GET['sort'])  || isset($_GET['pricesort'])) {
+if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['locationindex']) || isset($_GET['purposeindex'])|| isset($_GET['search']) || isset($_GET['sort'])  || isset($_GET['pricesort']) || isset($_GET['searchtype'])) {
     if (isset($_GET['locationindex']) && isset($_GET['purposeindex']) && isset($_GET['pricesort'])) {
         $locationindex = $_GET['locationindex'];
         $purposeindex = $_GET['purposeindex'];
@@ -27,7 +27,17 @@ if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['location
     }
     if (isset($_GET['location'])) {
         $location = $_GET['location'];
-        $sqlQuery = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid  WHERE location = '$location' AND purposeimg = 'image'";
+        $sqlQuery = "SELECT a.name as name, h.id as id, a.houseid as houseid, h.title as title, a.data as data, h.area as area, h.locationdetails as locationdetails, h.location as location, h.purpose as purpose, h.description as description, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.yearbuilding as yearbuilding, h.length as length, h.width as width, h.equipment as equipment, h.status as status  
+        FROM house as h 
+        JOIN housealbum as a ON h.id = a.houseid 
+        WHERE location = '$location' AND purposeimg = 'image'";
+    }
+    if (isset($_GET['searchtype'])) {
+        $searchtype = $_GET['searchtype'];
+        $sqlQuery = "SELECT a.name as name, h.id as id, a.houseid as houseid, h.title as title, a.data as data, h.area as area, h.locationdetails as locationdetails, h.location as location, h.purpose as purpose, h.description as description, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.yearbuilding as yearbuilding, h.length as length, h.width as width, h.equipment as equipment, h.status as status  
+        FROM house as h 
+        JOIN housealbum as a ON h.id = a.houseid 
+        WHERE type = '$searchtype' AND purposeimg = 'image'";
     }
     if (isset($_GET['sort'])) {
         $sort = $_GET['sort'];
@@ -45,11 +55,13 @@ if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['location
     }
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $key = $_GET['search'];
-        $sqlQuery = "SELECT * FROM housealbum as a JOIN house as h ON a.houseid = h.id WHERE purposeimg = 'image' AND  location LIKE '%$key%' OR purposeimg = 'image' AND description LIKE '%$key%' OR type LIKE '%$key%' OR purposeimg = 'image' AND locationdetails LIKE '%$key%' OR purposeimg = 'image' AND orienten LIKE '%$key%'";
+        $sqlQuery = "SELECT a.name as name, h.id as id, a.houseid as houseid, h.title as title, a.data as data, h.area as area, h.locationdetails as locationdetails, h.location as location, h.purpose as purpose, h.description as description, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.yearbuilding as yearbuilding, h.length as length, h.width as width, h.equipment as equipment, h.status as status  FROM house as h JOIN housealbum as a ON h.id = a.houseid 
+        WHERE location = '$location' AND purposeimg = 'image' AND  location LIKE '%$key%' OR purposeimg = 'image' AND description LIKE '%$key%' OR type LIKE '%$key%' OR purposeimg = 'image' AND locationdetails LIKE '%$key%' OR purposeimg = 'image' AND orienten LIKE '%$key%'";
     }
 
 } else {
-    $sqlQuery = "SELECT * FROM house as h JOIN housealbum as a ON h.id = a.houseid WHERE purposeimg = 'image'";
+    $sqlQuery = "SELECT a.name as name, h.id as id, a.houseid as houseid, h.title as title, a.data as data, h.area as area, h.locationdetails as locationdetails, h.location as location, h.purpose as purpose, h.description as description, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.yearbuilding as yearbuilding, h.length as length, h.width as width, h.equipment as equipment, h.status as status  FROM house as h JOIN housealbum as a ON h.id = a.houseid 
+    WHERE location = '$location' AND purposeimg = 'image'";
 }
 
 $stmt = $connect->prepare($sqlQuery);
