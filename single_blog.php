@@ -3,7 +3,7 @@ session_start();
 $connect = new PDO("mysql:host=127.0.0.1;dbname=mingrand;charset=utf8",
     "root", "Dmhung1102!");
 $id = $_GET['id'];
-$sqlQuery = "SELECT * FROM blog WHERE $id";
+$sqlQuery = "SELECT * FROM blog WHERE id=$id";
 $stmt = $connect->prepare($sqlQuery);
 $stmt->execute();
 $blog = $stmt -> fetch();
