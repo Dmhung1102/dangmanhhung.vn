@@ -18,7 +18,7 @@ if (isset($_GET['purpose']) || isset($_GET['location']) || isset($_GET['location
         $sqlQuery = "SELECT h.status as status ,h.equipment as equipment ,h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area  
         FROM house as h JOIN  housealbum as a ON h.id = a.houseid WHERE location LIKE '%$locationindex%' AND purpose LIKE '%$purposeindex' AND $priceget AND purposeimg = 'image'" ;
     }
-
+var_dump($sqlQuery);
     if (isset($_GET['purpose'])) {
         $purpose = $_GET['purpose'];
         $sqlQuery = "SELECT h.status as status ,h.equipment as equipment ,h.livingroom as livingroom, a.data as data, a.houseid as houseid, a.purposeimg as purposeimg, a.name as name ,h.locationdetails as locationdetails, h.length as length, h.width as width,  h.location as location, h.yearbuilding as yearbuilding, h.description as description, h.title as title, h.id as id, h.purpose as purpose, h.price as price, h.bedrooms as bedrooms, h.bathrooms as bathrooms, h.area as area, u.avt as avatar, u.name as username  
